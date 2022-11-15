@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="switch">[[${filter.get('session')}]]</div>
+    <h1>Redirecting to /staff/results</h1>
+    <form th:if="${filter.get('session')}!=''" name="form1" th:action="@{/staff/results}" method="post">
+        <input name="message" th:value="${message}">
+        <input type="hidden" name="emp_id" th:value='${filter.get("emp_id")}'>
+        <input type="hidden" name="SRN" th:value='${filter.get("SRN")}'>
+        <input type="hidden" name="class_" th:value='${filter.get("class_")}'>
+        <input type="hidden" name="section" th:value='${filter.get("section")}'>
+        <input type="hidden" name="course" th:value='${filter.get("course")}'>
+        <input type="hidden" name="session" th:value='${filter.get("session")}'>
+        <input type="hidden" name="limit" th:value='${filter.get("limit")}'>
+    </form>
+    <form th:if="${filter.get('session')}==''" name="form2" th:action="@{/staff/insert/session}" method="post">
+        <input type="hidden" name="message" th:value="${message}">
+    </form>
+    <script>
+        let switchEl = document.getElementById("switch");
+        let value = switchEl.innerText;
+        if (value == '') { document.form2.submit(); }
+        else { document.form1.submit(); }
+    </script>
+</body>
+
+</html>

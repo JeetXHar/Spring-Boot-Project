@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+    <link rel="stylesheet" th:href="@{/styles/home.css}">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.css">
+	<script href="/bootstrap/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <div>
+        <nav th:replace="components/navbar :: navbar"></nav>
+        <br>
+        <h2 style="text-align: center; color: crimson; margin-bottom: 12px;" th:if="${message!=null}">[[${message}]] </h2>
+        <h1 style="text-align:center; padding-bottom: 5%;">Welcome [[${User.getName()}]]!</h1>
+        <div class="container">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img th:src="@{/images/Assembly.png}" alt="logo" /></div>
+                    <div class="swiper-slide"><img th:src="@{/images/basketball.png}" alt="logo" /></div>
+                    <div class="swiper-slide"><img th:src="@{/images/classroom.png}" alt="logo" /></div>
+                    <div class="swiper-slide"><img th:src="@{/images/rangoli.png}" alt="logo" /></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+        <script>
+            const swiper = new Swiper('.swiper', {
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevE1: '.swiper-button-prev',
+                },
+            });
+        </script>
+    </div>
+    <footer th:replace="components/footer :: footer"></footer>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/styles/list.css}">
+	<link rel="stylesheet" href="/bootstrap/bootstrap.css">
+	<script href="/bootstrap/bootstrap.js"></script>
+	<title>Staff List</title>
+</head>
+
+<body>
+	<div>
+		<nav th:replace="components/navbar :: navbar"></nav>
+		<br>
+		<h1 style="text-align:center; padding-bottom: 1%;">Staff List</h1>
+		<h2 style="text-align: center; color: crimson; margin: 12px;" th:if="${message!=null}">[[${message}]] </h2>
+		<div class="content">
+			<div class="list">
+				<form th:action="@{/staff/list}" method="Post">
+					<input type="number" placeholder="Employee ID" id="emp_id" name="emp_id">
+					<input type="text" placeholder="Name" id="emp_name" name="name">
+					<select name="dept" id="dept">
+						<option value="">Select Department</option>
+						<option th:each="dept:${depts}" th:value="${dept}" th:text="${dept}"></option>
+					</select>
+					<select name="curr">
+						<option value="">All time staff</option>
+						<option value="1" selected>Currently working</option>
+						<option value="0">Left staff</option>
+					</select>
+					<select name="limit" id="limit" required>
+						<option value="" disabled selected hidden>Limit</option>
+						<option value="50">50</option>
+						<option value="100">100</option>
+						<option value="200">200</option>
+						<option value="500">500</option>
+						<option value="1000">1000</option>
+					</select><br>
+					
+					<div class="insert_button">
+						<input type="submit" placeholder="Search" class="submit_button">
+						<div>
+							<a href="#" th:href="@{/staff/add}">Insert</a>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="details_table">
+				<table>
+					<thead>
+						<td>Employee ID</td>
+						<td>Name</td>
+						<td>Contact Info</td>
+						<td>Email</td>
+						<td>Salary</td>
+						<td>Status</td>
+						<td colspan="2">Actions</td>
+					</thead>
+					<tr th:each="stf : ${staffs}">
+						<td>[[${stf.get("emp_id")}]]</td>
+						<td class="highlight"> <a th:href="@{'/staff/profile/'+${stf.get('UID')}}">[[${stf.get("name")}]]</a></td>
+						<td>[[${stf.get("phone_1")}]]</td>
+						<td>[[${stf.get("email")}]]</td>
+						<td>[[${stf.get("salary")}]]</td>
+						<td>Working</td>
+						<td class="button"> <a th:href="@{'/staff/edit/'+${stf.get('UID')}}">Edit</a> </td>
+						<td class="button"><a th:href="@{'/staff/delete/'+${stf.get('UID')}}" onclick="return confirmSubmission()">Delete</a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="components/footer :: footer"></footer>
+	<script>
+        var confirmSubmission = function () {
+            if (!confirm("make sure you have deleted this employee from all his departments")) {
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>

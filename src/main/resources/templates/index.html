@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<link rel="stylesheet" th:href="@{/styles/login.css}">
+<!-- <link rel="stylesheet" href="/bootstrap/bootstrap.css">
+	<script href="/bootstrap/bootstrap.js"></script> -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<div th:if="${param.error}">
+    <h4 style="color: red">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</h4>
+</div>
+
+<body>
+    <div class="card">
+        <div class="head">
+            <h1>Welcome to our school</h1>
+        </div>
+        <div class="card2">
+            <a th:href="@{/student/login}" class="login-button">Student</a>
+            <a th:href="@{/staff/login}" class="login-button">Staff</a>
+            
+        </div>
+    </div>
+</body>
+
+</html>

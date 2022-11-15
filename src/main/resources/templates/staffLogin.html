@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/styles/login.css}">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Login</title>
+</head>
+<div th:if="${param.error}">
+    <h4 style="color: red">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</h4>
+</div>
+
+<body>
+    <div class="card">
+        <div class="head">
+            <h1>Staff Login </h1>
+        </div>
+        <div class="card2">
+            <form th:action="@{/staff/login}" method="post">
+                <input type="text" placeholder="UID" name="UID" required>
+                <br>
+                <input type="password" placeholder="password" name="password" required>
+                <br>
+                <input type="submit" value="login" class="button">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

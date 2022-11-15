@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert Staff</title>
+    <link rel="stylesheet" href="/styles/stuinsert.css">
+	<link rel="stylesheet" href="/bootstrap/bootstrap.css">
+	<script href="/bootstrap/bootstrap.js"></script>
+</head>
+
+<body>
+    <div>
+        <nav th:replace="components/navbar :: navbar"></nav>
+        <br>
+        <h2 style="text-align: center; color: crimson; margin-bottom: 12px;" th:if="${message!=null}">[[${message}]] </h2>
+        <div class="content">
+            <div class="container">
+                <div class="form_container">
+                    <h2>Staff Insert Form</h2>
+                    <h4>Please Fill Student Details Properly</h4>
+                    <form th:action="@{/staff/add}" method="post">
+                        <div margin="10px"></div>
+                        <h5 padding-left="10px">Personel details</h5>
+                        <div class="block">
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_name">Name</label>
+                                <input class="form-control" type="text" id="Stf_name" name="stf_name" required>
+                            </div>
+                            <div class="form-floating col-md-4 my_input">
+                                <select name="stf_gender" class="form-control" id="Stf_gender" required>
+                                    <option value="" disabled selected hidden></option>
+                                    <option value="N">None</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    <br>
+                                    <label for="Gender">Gender</label>
+                                </select>
+                            </div>
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_dob">Date of Birth</label>
+                                <input class="form-control" type="date" id="Stf_dob" name="stf_dob" required>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_exp">Experience</label>
+                                <input class="form-control" type="number" id="Stf_exp" name="stf_exp">
+                            </div>
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_salary">Salary</label>
+                                <input class="form-control" type="number" id="Stf_salary" name="stf_salary" required>
+                            </div>
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_email">Email</label>
+                                <input class="form-control" type="email" id="Stf_email" name="stf_email" required>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_bg">Blood Group</label>
+                                <input class="form-control" type="text" id="Stf_bg" name="stf_bg">
+                            </div>
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_aadhar">Aadhar Number</label>
+                                <input class="form-control" type="text" id="Stf_aadhar" name="stf_aadhar" required>
+                            </div>
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_pan">PAN Number</label>
+                                <input class="form-control" type="text" id="Stf_pan" name="stf_pan" required>
+                            </div>
+                        </div>
+                        <h5>Contact Details</h5>
+                        <div class="block">
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_phone1">Phone:1</label>
+                                <input class="form-control" type="text" id="Stf_phone1" name="stf_phone1" required>
+                            </div>
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_phone2">Phone:2</label>
+                                <input class="form-control" type="text" id="Stf_phone2" name="stf_phone2">
+                            </div>
+                        </div>
+                        <h5>Address</h5>
+                        <div class="block">
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_street">Street</label>
+                                <input class="form-control" type="text" id="Stf_street" name="stf_street">
+                            </div>
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_city">City</label>
+                                <input class="form-control" type="text" id="Stf_city" name="stf_city">
+                            </div>
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_state">State</label>
+                                <input class="form-control" type="text" id="Stf_state" name="stf_state">
+                            </div>
+                        </div>
+                        <div class="block">
+                            <div class="form-floating col-md-4 my_input">
+                                <label for="Stf_pin">PIN</label>
+                                <input class="form-control" type="number" id="Stf_pin" name="stf_pin">
+                            </div>
+                        </div>
+                        <div class="my_button">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="components/footer :: footer"></footer>
+</body>
+
+</html>

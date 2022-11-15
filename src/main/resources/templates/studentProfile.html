@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/styles/profile.css}">
+    <link rel="stylesheet" th:href="@{/styles/navbar.css}">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.css">
+	<script href="/bootstrap/bootstrap.js"></script>
+    <title>[[${stu.getName()}]]</title>
+</head>
+
+<body>
+    <div>
+        <nav th:replace="components/navbar :: navbar"></nav>
+        <h2 style="text-align: center; color: crimson; margin-bottom: 12px;" th:if="${message!=null}">[[${message}]] </h2>
+        <br>
+        <div class="profile_info">
+            <div class="details-1">
+                <div class="profile_pic">
+                    <img th:src="@{/images/Hero.png}" alt="img">
+                </div>
+                <div class="profile_details">
+                    <table>
+                        <tr>
+                            <td class="name">
+                                <b> [[${stu.getName()}]] </b>
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>SRN:</td>
+                            <td>[[${stu.getSRN()}]]</td>
+                        </tr>
+                        <tr>
+                            <td>Class:</td>
+                            <td>[[${stu.getClass_no()}]]-[[${stu.getSection_no()}]]</td>
+                        </tr>
+                        <tr>
+                            <td>DOB:</td>
+                            <td>[[${stu.getDOB()}]]</td>
+                        </tr>
+                        <tr>
+                            <td>Gender:</td>
+                            <td th:if="${stu.getGender()=='M'}">Male</td>
+                            <td th:if="${stu.getGender()=='F'}">Female</td>
+                            <td th:if="${stu.getGender()=='N'}">None</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="details-2">
+                <table>
+                    <tr>
+                        <td class="attribute">Admission Date</td>
+                        <td class="value">[[${stu.getAdmission_date()}]]</td>
+                    </tr>
+                    <tr>
+                        <td class="attribute">Father/Guradian</td>
+                        <td class="value">[[${stu.getGuardian()}]]</td>
+                    </tr>
+                    <tr>
+                        <td class="attribute">Mother</td>
+                        <td class="value">[[${stu.getMother()}]]</td>
+                    </tr>
+                    <tr>
+                        <td class="attribute">Blood Group</td>
+                        <td class="value">[[${stu.getBlood_grp()}]]</td>
+                    </tr>
+                    <tr>
+                        <td class="attribute">Address</td>
+                        <td class="value">[[${stu.getStreet()}]], [[${stu.getCity()}]], [[${stu.getState()}]],
+                            [[${stu.getPIN()}]]</td>
+                    </tr>
+                    <tr>
+                        <td class="attribute">Contact no.</td>
+                        <td class="value">[[${stu.getPhone_1()}]], [[${stu.getPhone_2()}]]</td>
+                    </tr>
+                    <tr>
+                        <td class="attribute">Email</td>
+                        <td class="value">[[${stu.getEmail()}]]</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="components/footer :: footer"></footer>
+</body>
+
+</html>

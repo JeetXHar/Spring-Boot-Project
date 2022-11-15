@@ -1,0 +1,97 @@
+@import "nav.css";
+@import "footer.css";
+
+
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+
+.profile_container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body{
+  margin:0px;
+  padding:0;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  min-height: 100vh;
+  background-color: #DBF3FC !important;
+}
+  
+  .name{
+    font-weight: bold;
+    font-size: 20pt;
+    min-width: 10px;
+    max-width: 200px;
+  }
+
+  td
+  { 
+    font-weight: 500;
+    font-size: 15pt;
+    min-width: 80px;
+    max-width: 150px;
+  }
+
+  
+.details-1 {    
+    display: flex;
+    /* align-content: center; */
+    /* justify-content:center; */
+    width: 100vh;
+    display: flex;
+    margin-left: 35%;
+}
+.profile_info {
+  margin-top: 5%;
+  flex : 1; 
+  width: auto;
+}
+
+.profile_pic{
+    flex: 1;
+    max-width: 200px;
+    max-height: same as width;
+
+}
+
+.profile_pic img{
+  max-width: 200px;
+  max-height: same as width;
+}
+
+.profile_details{
+  margin-left: 5%;
+  align-self: center;
+}
+
+.details-2{
+  display: flex;
+  margin-left: 35%;
+  margin-top: 5%;
+}
+
+
+.attribute {
+    min-width: 40vh;
+    max-width: 70vh;
+    /* padding: 10% ; */
+
+    padding: 5px 10px 5px 10px;
+}
+
+.value{
+  max-width: 300px;
+  padding: 5px 10px 5px 10px;
+}
+
+.details-1 table{
+   /* width: 100%; */
+}
+  
